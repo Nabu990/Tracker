@@ -1,0 +1,55 @@
+/* Achievements Page Styles */
+.achievements-page {
+    padding: 2rem 0;
+}
+
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.achievement-card {
+    background: var(--light);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.achievement-card:hover {
+    transform: translateY(-5px);
+}
+
+.medal-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.medal-type {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.achievement-card.gold .medal-type {
+    background: var(--gold);
+    color: var(--dark);
+}
+
+.achievement-card.silver .medal-type {
+    background: var(--silver);
+    color: var(--dark);
+}
+
+.achievement-card.bronze .medal-type {
+    background: var(--bronze);
+    color: var(--dark);
+}

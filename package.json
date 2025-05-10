@@ -1,0 +1,19 @@
+{
+  "name": "athlete-profile",
+  "version": "1.0.0",
+  "description": "Track athlete profile website",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "chart.js": "^4.3.0",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}

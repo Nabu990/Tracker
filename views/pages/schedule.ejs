@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/schedule.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <%- include('../partials/header') %>
+    
+    <main class="schedule-page">
+        <div class="container">
+            <h1>Training & Competition Schedule</h1>
+            
+            <section class="upcoming-events">
+                <h2>Upcoming Events</h2>
+                <div class="events-grid">
+                    <% events.forEach(event => { %>
+                        <div class="event-card">
+                            <h3><%= event.name %></h3>
+                            <p class="date"><%= event.date %></p>
+                            <p class="location"><%= event.location %></p>
+                        </div>
+                    <% }); %>
+                </div>
+            </section>
+
+            <section class="training-schedule">
+                <h2>Weekly Training Schedule</h2>
+                <div class="schedule-grid">
+                    <% schedule.forEach(day => { %>
+                        <div class="schedule-card">
+                            <h3><%= day.day %></h3>
+                            <ul>
+                                <% day.activities.forEach(activity => { %>
+                                    <li><%= activity %></li>
+                                <% }); %>
+                            </ul>
+                        </div>
+                    <% }); %>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>

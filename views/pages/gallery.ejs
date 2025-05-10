@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/css/gallery.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+</head>
+<body>
+    <%- include('../partials/header') %>
+    
+    <main class="gallery-page">
+        <div class="container">
+            <h1>Photo Gallery</h1>
+            
+            <div class="gallery-filters">
+                <button class="filter-btn active" data-category="all">All</button>
+                <button class="filter-btn" data-category="Competition">Competition</button>
+                <button class="filter-btn" data-category="Training">Training</button>
+                <button class="filter-btn" data-category="Awards">Awards</button>
+                <button class="filter-btn" data-category="Team">Team</button>
+            </div>
+
+            <div class="gallery-grid">
+                <% gallery.forEach(item => { %>
+                    <div class="gallery-item" data-category="<%= item.category %>">
+                        <a href="/images/gallery/<%= item.image %>" data-lightbox="athlete-gallery" data-title="<%= item.description %>">
+                            <img src="/images/gallery/<%= item.image %>" alt="<%= item.title %>">
+                            <div class="gallery-item-overlay">
+                                <h3><%= item.title %></h3>
+                                <p><%= item.category %></p>
+                            </div>
+                        </a>
+                    </div>
+                <% }); %>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/gallery.js"></script>
+</body>
+</html>

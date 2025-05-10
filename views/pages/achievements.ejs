@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ... other meta tags ... -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/achievements.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <%- include('../partials/header') %>
+    
+    <main class="achievements-page">
+        <div class="container">
+            <h1>Track & Field Achievements</h1>
+            <div class="achievements-grid">
+                <% achievements.forEach(achievement => { %>
+                    <div class="achievement-card <%= achievement.medal.toLowerCase() %>">
+                        <div class="medal-icon">
+                            <% if (achievement.medal === 'Gold') { %>🥇
+                            <% } else if (achievement.medal === 'Silver') { %>🥈
+                            <% } else { %>🥉<% } %>
+                        </div>
+                        <h3><%= achievement.title %></h3>
+                        <p class="event"><%= achievement.event %></p>
+                        <p class="date"><%= achievement.date %></p>
+                        <div class="medal-type"><%= achievement.medal %></div>
+                    </div>
+                <% }); %>
+            </div>
+        </div>
+    </main>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>

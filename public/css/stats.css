@@ -1,0 +1,394 @@
+/* Stats Page Styles */
+.stats-page {
+    padding: 4rem 0;
+}
+
+.stats-page h1 {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--color-primary);
+}
+
+.stats-page h2 {
+    margin: 3rem 0 2rem;
+    color: var(--color-text);
+}
+
+/* Overview Cards */
+.overview-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.overview-card {
+    background: var(--color-white);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.overview-card:hover {
+    transform: translateY(-5px);
+}
+
+.overview-card i {
+    font-size: 2rem;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+
+.overview-card h4 {
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+}
+
+.overview-card .count {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--color-primary);
+}
+
+/* Event Performance Section */
+.event-performance {
+    padding: 2rem 0;
+    background: linear-gradient(to bottom right, #f8f9fa, #e9ecef);
+    border-radius: 20px;
+    margin: 2rem 0;
+}
+
+.event-performance h2 {
+    text-align: center;
+    color: var(--color-primary);
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+    position: relative;
+}
+
+.event-performance h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: var(--color-primary);
+    border-radius: 2px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    padding: 0 2rem;
+}
+
+.stat-card {
+    background: var(--color-white);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+}
+
+.stat-card h3 {
+    color: var(--color-primary);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+}
+
+.performance-details {
+    background: linear-gradient(to right, #f8f9fa, #ffffff);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+}
+
+.personal-best, .season-best {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.personal-best {
+    border-left: 4px solid #ffd700;
+}
+
+.season-best {
+    border-left: 4px solid #00bcd4;
+}
+
+.personal-best .label, .season-best .label {
+    font-weight: 600;
+    color: #495057;
+}
+
+.personal-best .value, .season-best .value {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--color-primary);
+}
+
+.personal-best .date {
+    font-size: 0.8rem;
+    color: #6c757d;
+    display: block;
+    margin-top: 0.2rem;
+}
+
+.progress-bar {
+    height: 8px;
+    background: #e9ecef;
+    border-radius: 4px;
+    margin: 1.5rem 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-bar .progress {
+    height: 100%;
+    background: linear-gradient(to right, var(--color-primary), #4dabf7);
+    border-radius: 4px;
+    transition: width 1s ease;
+    position: relative;
+}
+
+.progress-bar .progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.2) 25%,
+        transparent 25%,
+        transparent 50%,
+        rgba(255, 255, 255, 0.2) 50%,
+        rgba(255, 255, 255, 0.2) 75%,
+        transparent 75%,
+        transparent
+    );
+    background-size: 20px 20px;
+    animation: progressStripes 1s linear infinite;
+}
+
+@keyframes progressStripes {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 20px 0;
+    }
+}
+
+.event-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.stat-item {
+    text-align: center;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+    transition: transform 0.2s ease;
+}
+
+.stat-item:hover {
+    transform: scale(1.05);
+}
+
+.stat-item .label {
+    display: block;
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-bottom: 0.5rem;
+}
+
+.stat-item .value {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--color-primary);
+    display: block;
+}
+
+.chart-container {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.chart {
+    height: 200px;
+}
+
+/* Training Analytics */
+.training-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.training-card {
+    background: var(--color-white);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.recovery-stats {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.metric {
+    text-align: center;
+}
+
+.rating {
+    color: #ffd700;
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+}
+
+.rating .fa-star.active {
+    color: #ffd700;
+}
+
+.rating .fa-star:not(.active) {
+    color: #e0e0e0;
+}
+
+.progress-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: conic-gradient(var(--color-primary) var(--progress), #e0e0e0 var(--progress));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem auto;
+    position: relative;
+}
+
+.progress-circle::before {
+    content: '';
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    background: var(--color-white);
+    border-radius: 50%;
+}
+
+.percentage {
+    position: relative;
+    font-weight: bold;
+    color: var(--color-text);
+}
+
+/* Goals Section */
+.goals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.goal-card {
+    background: var(--color-white);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.goal-card h4 {
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+
+.target-time {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.progress-container {
+    text-align: center;
+}
+
+.progress-text {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .stats-page {
+        padding: 2rem 0;
+    }
+
+    .overview-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stats-grid, .training-grid, .goals-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .event-stats {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .overview-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .event-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+    }
+    
+    .event-performance {
+        margin: 1rem 0;
+    }
+    
+    .stat-card {
+        padding: 1.5rem;
+    }
+}

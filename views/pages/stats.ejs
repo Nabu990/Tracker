@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/stats.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <%- include('../partials/header') %>
+    
+    <main class="stats-page">
+        <div class="container">
+            <h1>Performance Statistics</h1>
+            
+            <!-- Overview Section -->
+            <section class="stats-overview">
+                <div class="overview-cards">
+                    <div class="overview-card">
+                        <i class="fas fa-running"></i>
+                        <h4>Total Events</h4>
+                        <p class="count"><%= totalEvents %></p>
+                    </div>
+                    <div class="overview-card">
+                        <i class="fas fa-medal"></i>
+                        <h4>Medals Won</h4>
+                        <p class="count"><%= totalMedals %></p>
+                    </div>
+                    <div class="overview-card">
+                        <i class="fas fa-clock"></i>
+                        <h4>Training Hours</h4>
+                        <p class="count"><%= trainingHours %>h</p>
+                    </div>
+                    <div class="overview-card">
+                        <i class="fas fa-chart-line"></i>
+                        <h4>PR Improvements</h4>
+                        <p class="count"><%= prImprovements %></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Event Performance Section -->
+            <section class="event-performance">
+                <h2>Event Performance Analysis</h2>
+                <div class="stats-grid">
+                    <% for(let event in stats) { %>
+                        <div class="stat-card">
+                            <h3><%= event %></h3>
+                            <div class="performance-details">
+                                <div class="personal-best">
+                                    <div>
+                                        <span class="label">Personal Best</span>
+                                        <span class="value"><%= stats[event].pb %></span>
+                                        <span class="date">Achieved: <%= stats[event].pbDate %></span>
+                                    </div>
+                                    <i class="fas fa-trophy" style="color: #ffd700;"></i>
+                                </div>
+                                <div class="season-best">
+                                    <div>
+                                        <span class="label">Season Best</span>
+                                        <span class="value"><%= stats[event].sb %></span>
+                                    </div>
+                                    <i class="fas fa-medal" style="color: #00bcd4;"></i>
+                                </div>
+                                <div class="progress-info">
+                                    <div class="progress-label">
+                                        <span>Progress to Goal</span>
+                                        <span><%= stats[event].progressPercentage %>%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: <%= stats[event].progressPercentage %>%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="chart-container">
+                                <canvas id="chart-<%= event.replace(/\s+/g, '-').toLowerCase() %>" class="chart"></canvas>
+                            </div>
+
+                            <div class="event-stats">
+                                <div class="stat-item">
+                                    <i class="fas fa-flag-checkered"></i>
+                                    <span class="label">Total Races</span>
+                                    <span class="value"><%= stats[event].totalRaces %></span>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-medal"></i>
+                                    <span class="label">Medals</span>
+                                    <span class="value"><%= stats[event].medals %></span>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-stopwatch"></i>
+                                    <span class="label">Avg Time</span>
+                                    <span class="value"><%= stats[event].averageTime %>s</span>
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+            </section>
+
+            <!-- Training Analytics Section -->
+            <section class="training-analytics">
+                <h2>Training Analytics</h2>
+                <div class="training-grid">
+                    <div class="training-card">
+                        <h3>Weekly Training Load</h3>
+                        <canvas id="training-load-chart"></canvas>
+                    </div>
+                    <div class="training-card">
+                        <h3>Recovery Metrics</h3>
+                        <div class="recovery-stats">
+                            <div class="metric">
+                                <span class="label">Sleep Quality</span>
+                                <div class="rating">
+                                    <% for(let i = 0; i < 5; i++) { %>
+                                        <i class="fas fa-star <%= i < recoveryMetrics.sleepQuality ? 'active' : '' %>"></i>
+                                    <% } %>
+                                </div>
+                            </div>
+                            <div class="metric">
+                                <span class="label">Muscle Recovery</span>
+                                <div class="progress-circle" data-value="<%= recoveryMetrics.muscleRecovery %>">
+                                    <span class="percentage"><%= recoveryMetrics.muscleRecovery %>%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Goals Section -->
+            <section class="performance-goals">
+                <h2>Season Goals</h2>
+                <div class="goals-grid">
+                    <% goals.forEach(goal => { %>
+                        <div class="goal-card">
+                            <h4><%= goal.event %></h4>
+                            <div class="target-time">
+                                <span class="label">Target:</span>
+                                <span class="value"><%= goal.target %></span>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: <%= goal.progress %>%"></div>
+                                </div>
+                                <span class="progress-text"><%= goal.progress %>% Complete</span>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="/js/stats.js"></script>
+</body>
+</html>

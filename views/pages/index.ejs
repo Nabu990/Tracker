@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <%- include('../partials/header') %>
+
+    <main>
+        <section class="hero">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <h1><%= athlete.name %></h1>
+                    <p class="subtitle">Rising Track Star from <%= athlete.country %></p>
+                    <p class="category"><%= athlete.category %> Track & Field Athlete</p>
+                    <div class="specialties">
+                        <h3>Specialties:</h3>
+                        <ul>
+                            <% athlete.specialties.forEach(specialty => { %>
+                                <li><i class="fas fa-running"></i> <%= specialty %></li>
+                            <% }); %>
+                        </ul>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="/images/gallery/medal.jpg" alt="<%= athlete.name %> - Track Athlete" class="profile-image">
+                </div>
+            </div>
+        </section>
+
+        <section class="athlete-bio">
+            <div class="container">
+                <div class="bio-grid">
+                    <div class="bio-image">
+                        <img src="/images/gallery/victory.jpg" alt="<%= athlete.name %>">
+                    </div>
+                    <div class="bio-content">
+                        <h2>About Me</h2>
+                        <p class="bio-text">
+                            A dedicated <%= athlete.age %>-year-old track athlete from <%= athlete.country %>, 
+                            specializing in sprint events. With a passion for athletics that began in early 
+                            childhood, I've developed into a promising talent in the <%= athlete.category %> category.
+                        </p>
+                        <div class="bio-stats">
+                            <div class="stat-item">
+                                <i class="fas fa-medal"></i>
+                                <h4>Achievements</h4>
+                                <p>Multiple National Medals</p>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-stopwatch"></i>
+                                <h4>Training</h4>
+                                <p>6 Days/Week</p>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-trophy"></i>
+                                <h4>Goals</h4>
+                                <p>International Success</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="personal-bests">
+            <div class="container">
+                <h2>Personal Bests</h2>
+                <div class="records-grid">
+                    <% for(let event in athlete.personalBest) { %>
+                        <div class="record-card">
+                            <div class="record-icon">
+                                <i class="fas fa-stopwatch"></i>
+                            </div>
+                            <h3><%= event %></h3>
+                            <p class="record-time"><%= athlete.personalBest[event] %></p>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-achievements">
+            <div class="container">
+                <h2>Recent Achievements</h2>
+                <div class="achievements-slider">
+                    <% athlete.recentAchievements.forEach(achievement => { %>
+                        <div class="achievement-card">
+                            <div class="medal-icon <%= achievement.medal.toLowerCase() %>">
+                                <i class="fas fa-medal"></i>
+                            </div>
+                            <h3><%= achievement.title %></h3>
+                            <p class="event"><%= achievement.event %></p>
+                            <p class="date"><%= achievement.date %></p>
+                        </div>
+                    <% }); %>
+                </div>
+            </div>
+        </section>
+
+        <section class="quote-section">
+            <div class="container">
+                <div class="quote-content">
+                    <i class="fas fa-quote-left"></i>
+                    <blockquote>
+                        Success in athletics comes from dedication, perseverance, and the willingness to push beyond your limits every single day.
+                    </blockquote>
+                    <cite>- <%= athlete.name %></cite>
+                </div>
+            </div>
+        </section>
+
+        <section class="latest-news">
+            <div class="container">
+                <h2>Latest Updates</h2>
+                <div class="news-grid">
+                    <% athlete.latestNews.forEach(news => { %>
+                        <article class="news-card">
+                            <div class="news-image">
+                                <img src="/images/gallery/<%= news.image %>" alt="<%= news.title %>">
+                            </div>
+                            <div class="news-content">
+                                <h3><%= news.title %></h3>
+                                <p class="date"><i class="far fa-calendar-alt"></i> <%= news.date %></p>
+                                <p class="excerpt"><%= news.excerpt %></p>
+                                <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </article>
+                    <% }); %>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Follow My Journey</h2>
+                    <p>Stay updated with my latest achievements and training progress</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="/js/main.js"></script>
+    <script src="/js/home.js"></script>
+    <script src="/js/animation.js"></script>
+    
+</body>
+</html>

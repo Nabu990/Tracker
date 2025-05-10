@@ -1,0 +1,611 @@
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes shine {
+    from {
+        background-position: 200% center;
+    }
+    to {
+        background-position: -200% center;
+    }
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/images/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    color: var(--light);
+    padding: 120px 0 60px;
+    text-align: center;
+    margin-top: -80px;
+    padding-top: 80px;
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 1s ease-out;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-primary);
+    opacity: 0.2;
+    animation: shine 8s linear infinite;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 4rem 0;
+}
+
+.hero-text {
+    flex: 1;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: slideInRight 1s ease-out;
+}
+
+.profile-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.profile-image:hover {
+    transform: scale(1.02);
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--light);
+    animation: fadeInUp 1s ease-out;
+    background: var(--gradient-secondary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero .subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--secondary-color);
+    animation: fadeInUp 1s ease-out 0.2s backwards;
+}
+
+.specialties {
+    display: inline-block;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 1.5rem 2rem;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--secondary-color);
+    animation: fadeInUp 1s ease-out 0.4s backwards;
+}
+
+.specialties h3 {
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+}
+
+.specialties ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.specialties li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.specialties li:hover {
+    transform: translateY(-3px);
+}
+
+.specialties i {
+    color: var(--secondary-color);
+    animation: pulse 2s infinite;
+}
+
+@media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 2rem 0;
+    }
+
+    .hero-image {
+        margin-bottom: 2rem;
+    }
+
+    .profile-image {
+        max-width: 80%;
+    }
+}
+
+/* Bio Section */
+.athlete-bio {
+    padding: 5rem 0;
+    background: var(--light);
+}
+
+.bio-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 4rem;
+    align-items: center;
+    opacity: 0;
+}
+
+.bio-grid.visible {
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+.bio-image img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.bio-image img:hover {
+    transform: scale(1.02) rotate(1deg);
+}
+
+.bio-content h2 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-size: 2.5rem;
+}
+
+.bio-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    color: #444;
+}
+
+.bio-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+}
+
+.stat-item i {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.stat-item h4 {
+    color: var(--dark);
+    margin-bottom: 0.5rem;
+}
+
+/* Records Section */
+.personal-bests {
+    padding: 5rem 0;
+    background: #f8f9fa;
+}
+
+.records-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.record-card {
+    background: var(--light);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    opacity: 0;
+}
+
+.record-card.visible {
+    animation: slideInRight 0.8s ease-out forwards;
+}
+
+.record-card:nth-child(odd).visible {
+    animation-name: slideInLeft;
+}
+
+.record-card:hover {
+    transform: translateY(-5px);
+}
+
+.record-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+}
+
+.record-icon i {
+    font-size: 1.5rem;
+    color: var(--light);
+}
+
+.record-card h3 {
+    color: var(--dark);
+    margin-bottom: 1rem;
+}
+
+.record-time {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* Achievements Section */
+.featured-achievements {
+    padding: 5rem 0;
+    background: var(--light);
+}
+
+.achievements-slider {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.achievement-card {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    opacity: 0;
+}
+
+.achievement-card.visible {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.achievement-card:hover {
+    transform: translateY(-5px);
+}
+
+.medal-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.medal-icon::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: shine 2s linear infinite;
+}
+
+.medal-icon.gold {
+    background: linear-gradient(45deg, #ffd700, #ffcc00);
+}
+
+.medal-icon.silver {
+    background: linear-gradient(45deg, #c0c0c0, #e0e0e0);
+}
+
+.medal-icon.bronze {
+    background: linear-gradient(45deg, #cd7f32, #dda15e);
+}
+
+.medal-icon i {
+    font-size: 2rem;
+    color: var(--light);
+}
+
+/* Quote Section */
+.quote-section {
+    padding: 5rem 0;
+    background: var(--primary-color);
+    color: var(--light);
+}
+
+.quote-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    opacity: 0;
+}
+
+.quote-content.visible {
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+.quote-content i {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    animation: pulse 3s infinite;
+}
+
+blockquote {
+    font-size: 1.5rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+}
+
+cite {
+    font-size: 1.1rem;
+    font-style: normal;
+}
+
+/* News Section */
+.latest-news {
+    padding: 5rem 0;
+    background: #f8f9fa;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.news-card {
+    background: var(--light);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    opacity: 0;
+}
+
+.news-card.visible {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+}
+
+.news-image {
+    height: 200px;
+    overflow: hidden;
+}
+
+.news-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.news-card:hover .news-image img {
+    transform: scale(1.1);
+}
+
+.news-content {
+    padding: 1.5rem;
+}
+
+.news-content h3 {
+    color: var(--dark);
+    margin-bottom: 1rem;
+}
+
+.news-content .date {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.news-content .excerpt {
+    color: #444;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.read-more {
+    color: var(--primary-color);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+}
+
+.read-more:hover {
+    color: var(--secondary-color);
+}
+
+/* CTA Section */
+.cta-section {
+    padding: 5rem 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/images/cta-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    color: var(--light);
+    text-align: center;
+}
+
+.cta-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.cta-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.social-links {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.social-link {
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--light);
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background: var(--secondary-color);
+    transform: translateY(-5px);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .bio-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .bio-image {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 100px 0 40px;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .specialties ul {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .bio-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+
+    blockquote {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .record-card,
+    .achievement-card {
+        padding: 1.5rem;
+    }
+
+    .social-link {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+}
